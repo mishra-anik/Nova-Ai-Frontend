@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../features/AuthProvider";
@@ -26,7 +28,7 @@ const Login = () => {
 		} catch (error) {
 			console.error(
 				"Login failed:",
-				error.response?.data || error.message
+				error.response?.data || error.message,
 			);
 			alert("Login Failed!");
 		}
@@ -120,12 +122,13 @@ const Login = () => {
 				</form>
 
 				<div className='flex justify-between text-sm text-gray-400'>
-					<a href='#' className='hover:underline'>
+					<Link to='/forgot-password' className='hover:underline'>
 						Forgot password?
-					</a>
-					<a href='/register' className='hover:underline'>
+					</Link>
+
+					<Link to='/register' className='hover:underline'>
 						Create account
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>

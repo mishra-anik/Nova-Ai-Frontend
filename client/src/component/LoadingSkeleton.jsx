@@ -1,23 +1,18 @@
 const LoadingSkeleton = () => {
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
-        <div className="w-full max-w-4xl p-6 bg-[#273449] rounded-2xl shadow-lg space-y-6">
-      <div className="max-w-4xl mx-auto space-y-6">
-        <div className="h-10 w-1/3 rounded-lg bg-gray-700 animate-pulse" />
-
-        <div className="space-y-4">
-          <div className="h-4 w-full rounded bg-gray-700 animate-pulse" />
-          <div className="h-4 w-11/12 rounded bg-gray-700 animate-pulse" />
-          <div className="h-4 w-10/12 rounded bg-gray-700 animate-pulse" />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="h-28 rounded-xl bg-gray-700 animate-pulse" />
-          <div className="h-28 rounded-xl bg-gray-700 animate-pulse" />
-          <div className="h-28 rounded-xl bg-gray-700 animate-pulse" />
-        </div>
+    <div className="relative min-h-screen bg-gray-900 overflow-hidden">
+      
+      {/* Moving Banner */}
+      <div className="absolute inset-0">
+        <div className="w-full h-full bg-gray-800" />
+        <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-gray-500/30 to-transparent" />
       </div>
+
+      {/* Optional Center Text */}
+      <div className="relative z-10 flex items-center justify-center min-h-screen">
+        <p className="text-gray-400 text-lg">Loading...</p>
       </div>
+
     </div>
   );
 };
