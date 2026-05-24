@@ -18,7 +18,7 @@ const Register = () => {
 
 	const onSubmit = async (data) => {
 		try {
-			const response = await axios.post(`${apiUrl}/register`, data, {
+			const response = await axios.post(`${apiUrl}/api/auth/register`, data, {
 				withCredentials: true,
 			});
 			console.log(response);
