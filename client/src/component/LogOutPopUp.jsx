@@ -13,7 +13,7 @@ const LogOutPopUp = ({ setPopupOpen }) => {
 	const onLogout = async () => {
 		try {
 			console.log(apiUrl);
-			await axios.post(`${apiUrl}/logout`, {}, { withCredentials: true });
+			await axios.post(`${apiUrl}/api/auth/logout`, {}, { withCredentials: true });
 			setIsAuthenticated(false);
 			setPopupOpen(false);
 		} catch (error) {
