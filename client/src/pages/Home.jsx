@@ -4,10 +4,16 @@ import ChatInterface from "../component/ChatInterface";
 
 const Home = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const [messages, setMessages] = useState([]);
+
+	const handleNewChat = () => {
+		setMessages([]);
+		setIsSidebarOpen(false);
+	};
 
 	return (
 		<div className='flex h-screen overflow-hidden'>
-			<Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+			<Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} onNewChat={handleNewChat} />
 
 			<div className='flex-1 flex flex-col'>
 				{!isSidebarOpen && (
@@ -21,7 +27,7 @@ const Home = () => {
 					</button>
 				)}
 
-				<ChatInterface />
+				<ChatInterface messages={messages} setMessages={setMessages} />
 			</div>
 		</div>
 	);
