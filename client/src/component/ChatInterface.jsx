@@ -36,15 +36,19 @@ const ChatInterface = ({ messages, setMessages }) => {
   };
 
   useEffect(() => {
-    socket.on("ai-response", (data) => {
-      setMessages((prev) => [
-        ...prev,
-        { text: sanitizeText(data.response), role: "ai", timestamp: new Date() },
-      ]);
-    });
-    return () => socket.off("ai-response");
-  }, []);
+  socket.on("ai-response", (data) => {
+    setMessages((prev) => [
+      ...prev,
+      {
+        text: sanitizeText(data.response),
+        role: "model",
+        timestamp: new Date(),
+      },
+    ]);
+  });
 
+  return () => socket.off("ai-response");
+}, []);
   const handleSend = () => {
     if (!input.trim()) return;
     setMessages((prev) => [
@@ -75,7 +79,7 @@ const ChatInterface = ({ messages, setMessages }) => {
         {/* Messages Container */}
         <div
           ref={containerRef}
-          className="flex-1 overflow-y-auto rounded-lg p-3 sm:p-4 md:p-6 bg-[#1e2939] shadow-inner flex flex-col space-y-3 md:space-y-4 min-h-0"
+          className="flex-1 overflow-y-auto rounded-lg p-3 sm:p-4 md:p-6 bg-[#1e2939] shadow-inner flex flex-col space-y-3 md:space-y-4 min-h-0 custom-scrollbar"
         >
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
